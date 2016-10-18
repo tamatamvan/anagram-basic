@@ -23,7 +23,7 @@ module.exports = {
       })
     }
 
-    return queryInterface.bulkInsert('Word', arr)
+    return queryInterface.bulkInsert('Words', arr)
   },
 
   down: function (queryInterface, Sequelize) {
