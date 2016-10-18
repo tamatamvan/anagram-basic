@@ -6,7 +6,16 @@ var helper = require('../helpers/util');
 
 router.get('/', function(req, res, next) {
   // console.log(req.body.anagram);
+  // console.log(JSON.stringify(req.body));
+
   res.render('index', {title: 'Anagrams'});
+});
+
+router.post('/', function(req, res, next) {
+  // console.log(req.body.anagram);
+  // console.log(JSON.stringify(req.body));
+
+  res.redirect(`${req.body.anagram}`)
 });
 
 router.get('/:word', function(req, res, next) {

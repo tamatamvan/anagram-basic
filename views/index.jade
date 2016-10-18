@@ -2,11 +2,10 @@ extends layout
 
 block content
   h1= title
-  form(name="form_anagram", method="post", action="/#{test}")
+  form(name="form_anagram", method="post", action="/")
         div.input
             span.label Input Anagram
             input(type="text", name="anagram")
-            input(type="hidden", name="test", value="#{anagram}")
         div.actions
             input(type="submit", value="add")
   if word
