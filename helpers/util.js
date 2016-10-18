@@ -2,20 +2,20 @@
 
 var models = require('../models/index');
 var word = models.Words;
+var sequelize = require('sequelize');
 var util = {};
+var hasil = []
 
 util.anagrams = function(source, callback){
-  console.log(source);
-  // var hasil = []
-  // word.findAll().then(function (data, err){
-  //   if (err){
-  //     return err
-  //   } else {
-  //     return data
-  //   }
-  // })
-  var data = source.split('')
-  callback(source, data)
+  word.findAll({
+    where: sequelize.where(sequelize.fn('char_length', sequelize.col('kata')), source.length)
+    }).then(function (data){
+      for(var i = 0; i < data.length; i++){
+        if (data[i])
+          hasil.push(data[i].dataValues.kata)
+      }
+      callback(source, hasil)
+    })
 }
 
 module.exports = util;
