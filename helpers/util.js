@@ -73,11 +73,8 @@ function cekJumlahKata(b, temp){
 
 util.anagrams = function(source, callback){
   let result = []
-  anagram_dev.findAll().then((data)=>{
+  anagram_dev.findAll().then((data) => {
     for(var i = 0 ; i < data.length ; i++){
-      // if(source.includes(data[i].dataValues.words)){
-      //   result.push(data[i].dataValues.words)
-      // }
       if(data[i].dataValues.words.length === source.length && cekString(source, data[i].dataValues.words)){
         result.push(data[i].dataValues.words)
       }
