@@ -1,21 +1,20 @@
 'use strict';
 
 var models = require('../models/index');
+var anagram_dev = models.anagram_dev
 var util = {};
-
-let fs = require('fs')
-let data_file = fs.readFileSync('./db/fixtures/words', 'utf8').split("\n")
 
 util.anagrams = function(source, callback){
   // console.log(source);
   let result = []
-  for(var i = 0 ; i < data_file.length ; i++){
-    if(data_file[i] === source){
-      result.push(data_file[i])
+  anagram_dev.findAll().then((data)=>{
+    for(var i = 0 ; i < data.length ; i++){
+      if(source.includes(data[i].dataValues.words)){
+        result.push(data[i].dataValues.words)
+      }
     }
-  }
-  // console.log(data_file[2]);
-  callback(source, result)
+    callback(source, result)
+  })
 }
 
 module.exports = util;

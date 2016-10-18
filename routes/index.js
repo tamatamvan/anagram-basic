@@ -5,6 +5,7 @@ var helper = require('../helpers/util');
 /* GET home page. */
 
 router.get('/', function(req, res, next) {
+  // console.log(req.body.anagram);
   res.render('index', {title: 'Anagrams'});
 });
 

@@ -2,8 +2,15 @@ extends layout
 
 block content
   h1= title
-  p anagram dari kata #{word} adalah :
+  form(name="form_anagram", method="post", action="/#{test}")
+        div.input
+            span.label Input Anagram
+            input(type="text", name="anagram")
+            input(type="hidden", name="test", value="#{anagram}")
+        div.actions
+            input(type="submit", value="add")
   if word
+    p anagram dari kata #{word} adalah :
     ul
       each anagram in anagrams.length ? anagrams : ['There are no values']
         li= anagram
