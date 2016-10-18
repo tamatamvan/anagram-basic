@@ -5,22 +5,25 @@ let word = models.word;
 
 /* GET users listing. */
 router.get('/', (req, res, next) => {
-  word.findAll().then((data, err) => {
-    res.render('index', { data });
+  word.findAll({
+    attributes: ['word']
+  }).then((data, err) => {
+    res.render('index', { data, title: 'Dictionary' });
   })
 });
 
+/*get users by length */
 module.exports = router;
-
-let cekLength = () =>  database.map(
-  (value) => {
-  if (value.length === test.length) {
-    return value
-  }else {
-    return null
-  }
-})
-
+//cek length
+// let cekLength = () =>  database.map(
+//   (value) => {
+//   if (value.length === test.length) {
+//     return value
+//   }else {
+//     return null
+//   }
+// })
+//cek string
 let cekString = (string1,string2) =>{
   var x =string1.split('').sort()
   var y = string2.split('').sort()
@@ -38,6 +41,7 @@ let cekString = (string1,string2) =>{
   return false
   }
 
+//result
 let hasil = () => {
   for (var i = 0; i < cekAngka().length; i++) {
     if (cekString(cekAngka()[i].toString(),inputUser)) {
