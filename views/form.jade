@@ -1,0 +1,19 @@
+h1 Anagram Server
+p Welcome to Anagram Server
+extends layout
+
+form(action='/' method='post')
+  .form-group
+    label.active(for='kata') Isi kata :
+    br
+    input(
+      id='kata'
+      type='text'
+      name='kata'
+      placeholder='Enter the word'
+    )
+  br
+  .form-group
+    button.btn.waves-effect.waves-light(
+      type='submit'
+    ) Check Anagram
