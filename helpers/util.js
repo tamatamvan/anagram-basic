@@ -3,6 +3,7 @@
 var models = require('../models/index');
 var anagram_dev = models.anagram_dev
 var util = {};
+var Sequelize = require('sequelize');
 
 function cekString(a, b){
 	var newA = [];
@@ -73,9 +74,12 @@ function cekJumlahKata(b, temp){
 
 util.anagrams = function(source, callback){
   let result = []
-  anagram_dev.findAll().then((data) => {
+  anagram_dev.findAll({
+    where: Sequelize.where(Sequelize.fn('char_length', Sequelize.col('words')), source.length)
+  }).then((data) => {
+    // console.log(data.dataValues.words);
     for(var i = 0 ; i < data.length ; i++){
-      if(data[i].dataValues.words.length === source.length && cekString(source, data[i].dataValues.words)){
+      if(cekString(source, data[i].dataValues.words)){
         result.push(data[i].dataValues.words)
       }
     }
