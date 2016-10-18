@@ -2,6 +2,18 @@ extends layout
 
 block content
   h1= title
+  form(name="input", method="post", action='/word')
+        div.input
+            span.label Silahkan ketik sebuah kata :
+            br
+            br
+            input(type="text", name="word")
+            br
+            br
+        div.actions
+            input(type="submit", value="search")
+
+
   p anagram dari kata #{word} adalah :
   if word
     ul
