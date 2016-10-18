@@ -2,8 +2,11 @@ extends layout
 
 block content
   h1= title
-  p anagram dari kata #{word} adalah :
-  if word
-    ul
-      each anagram in anagrams.length ? anagrams : ['There are no values']
-        li= anagram
+  p Welcome to #{title}
+  form#form(method='get')
+    | Kata yang ingin dicari:
+    input(type='text', name='anagram', value='')
+    br
+    br
+    input(type='submit', value='Submit')
+  p  kata anagram yang dapat dibuat dari kata-kata yang diinput adalah:
