@@ -6,14 +6,16 @@ var util = {};
 
 util.anagrams = function(source, callback){
   console.log(source);
-  var hasil = []
-  word.findAll().then(function (data, err){
-    if (err){
-      return err
-    } else {
-      return data
-    }
-  })
+  // var hasil = []
+  // word.findAll().then(function (data, err){
+  //   if (err){
+  //     return err
+  //   } else {
+  //     return data
+  //   }
+  // })
+  var data = source.split('')
+  callback(source, data)
 }
 
 module.exports = util;
